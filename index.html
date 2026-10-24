@@ -15,14 +15,14 @@
 <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col font-sans">
 <header class="border-b border-slate-800 bg-slate-900/60 backdrop-blur sticky top-0 z-50 px-4 py-3">
 <div class="max-w-4xl mx-auto flex flex-wrap justify-between items-center gap-2">
-<div class="flex items-center gap-3"><div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-white flex items-center justify-center font-black text-white">FR</div><div><h1 class="font-bold text-sm">French Master - No Repetition - People Places Feelings</h1><p class="text-[11px] text-slate-400">7200 Unique Words & 5200 Unique Sentences - Ghana Focus</p></div></div>
+<div class="flex items-center gap-3"><div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-white flex items-center justify-center font-black text-white">FR</div><div><h1 class="font-bold text-sm">French Master - No Repetition - Ghana Focus</h1><p class="text-[11px] text-slate-400">7200 Unique Words & 5200 Unique Sentences</p></div></div>
 <div class="flex gap-2"><div class="bg-slate-900 border border-slate-800 px-3 py-1.5 rounded-xl text-center"><span class="text-[9px] block text-slate-400 uppercase">Voice</span><span id="k-voice-name" class="text-[10px] font-bold text-emerald-400">Loading...</span></div><div class="bg-slate-900 border border-slate-800 px-3 py-1.5 rounded-xl text-center"><span class="text-[9px] block text-slate-400 uppercase">Mastered</span><span id="mastered-count" class="text-xs font-black text-indigo-400">0 / 0</span></div></div>
 </div>
 </header>
 <main class="max-w-4xl mx-auto px-4 py-6 w-full flex-1 flex flex-col gap-4">
 <div class="w-full bg-slate-900 border border-slate-800 rounded-full h-2 overflow-hidden"><div id="progress-bar" class="bg-gradient-to-r from-blue-500 to-white h-full transition-all" style="width:0%"></div></div>
 <div class="flex flex-col sm:flex-row gap-3 justify-between">
-<div class="flex flex-wrap gap-2"><select id="mode-select" onchange="switchMode()" class="bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs font-bold text-blue-400"><option value="WORDS">Vocabulary Mode (7,000+ Words)</option><option value="SENTENCES">Sentence Practice Mode (5,000+ Sentences)</option></select><select id="category-select" onchange="changeCategory()" class="bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs font-bold text-indigo-300"><option value="ALL">All Categories</option><option value="Daily">Daily Life</option><option value="People">People - Personnes</option><option value="Places">Places - Lieux</option><option value="Feelings">Feelings - Sentiments</option><option value="Business">Business</option><option value="Travel">Travel</option><option value="Academic">Academic</option><option value="Culture">Culture & Food</option><option value="Ghana">Ghana Focus</option></select><button onclick="toggleFilterMastered()" id="filter-btn" class="px-3 py-2 rounded-xl text-xs font-bold bg-slate-900 border border-slate-800">Hide Mastered</button></div>
+<div class="flex flex-wrap gap-2"><select id="mode-select" onchange="switchMode()" class="bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs font-bold text-blue-400"><option value="WORDS">Vocabulary Mode (7,000+ Words)</option><option value="SENTENCES">Sentence Practice Mode (5,000+ Sentences)</option></select><select id="category-select" onchange="changeCategory()" class="bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs font-bold text-indigo-300"><option value="ALL">All Categories</option><option value="Daily">Daily Life</option><option value="Business">Business</option><option value="Travel">Travel</option><option value="Academic">Academic</option><option value="Culture">Culture & Food</option><option value="Ghana">Ghana Focus</option></select><button onclick="toggleFilterMastered()" id="filter-btn" class="px-3 py-2 rounded-xl text-xs font-bold bg-slate-900 border border-slate-800">Hide Mastered</button></div>
 <div class="flex gap-2 items-center"><input id="search-input" oninput="handleSearch()" placeholder="Search French..." class="bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs w-32"><select id="speech-rate" class="bg-slate-900 border border-slate-800 rounded-xl px-2 py-2 text-xs"><option value="0.75">0.75x</option><option value="0.9" selected>0.9x natural</option><option value="1.0">1.0x</option></select><label class="flex items-center gap-1 text-[11px] bg-slate-900 border border-slate-800 rounded-xl px-2 py-2"><input type="checkbox" id="auto-en" checked> FR→EN</label></div>
 </div>
 <div class="w-full max-w-lg mx-auto">
@@ -64,87 +64,17 @@ const REAL_VOCAB_DATABASE = [
 {"french":"Soleil","phonetic":"so-lei","english":"Sun","category":"Daily"},
 {"french":"Marché","phonetic":"mar-sheh","english":"Market","category":"Ghana"},
 {"french":"Ecole","phonetic":"eh-kol","english":"School","category":"Academic"},
-{"french":"Grand","phonetic":"gron","english":"Big","category":"Daily"},
-// === NEW - PEOPLE ===
-{"french":"Personne","phonetic":"per-sonn","english":"Person","category":"People"},
-{"french":"Ami","phonetic":"ah-mee","english":"Friend","category":"People"},
-{"french":"Meilleur ami","phonetic":"meh-yor ah-mee","english":"Best friend","category":"People"},
-{"french":"Père","phonetic":"pair","english":"Father","category":"People"},
-{"french":"Mère","phonetic":"mair","english":"Mother","category":"People"},
-{"french":"Frère","phonetic":"frair","english":"Brother","category":"People"},
-{"french":"Soeur","phonetic":"soer","english":"Sister","category":"People"},
-{"french":"Enfant","phonetic":"on-fon","english":"Child","category":"People"},
-{"french":"Bébé","phonetic":"beh-beh","english":"Baby","category":"People"},
-{"french":"Garçon","phonetic":"gar-son","english":"Boy","category":"People"},
-{"french":"Fille","phonetic":"fee","english":"Girl","category":"People"},
-{"french":"Homme","phonetic":"om","english":"Man","category":"People"},
-{"french":"Femme","phonetic":"fam","english":"Woman","category":"People"},
-{"french":"Professeur","phonetic":"pro-feh-seur","english":"Teacher","category":"People"},
-{"french":"Etudiant","phonetic":"eh-tew-dyon","english":"Student","category":"People"},
-{"french":"Ghanéen","phonetic":"ga-neh-an","english":"Ghanaian","category":"People"},
-// === NEW - PLACES ===
-{"french":"Bibliothèque","phonetic":"bee-blee-oh-tek","english":"Library","category":"Places"},
-{"french":"Maison","phonetic":"meh-zon","english":"House","category":"Places"},
-{"french":"Hôpital","phonetic":"oh-pee-tal","english":"Hospital","category":"Places"},
-{"french":"Banque","phonetic":"bonk","english":"Bank","category":"Places"},
-{"french":"Gare","phonetic":"gar","english":"Station","category":"Places"},
-{"french":"Parc","phonetic":"park","english":"Park","category":"Places"},
-{"french":"Musée","phonetic":"mew-zeh","english":"Museum","category":"Places"},
-{"french":"Plage","phonetic":"plazh","english":"Beach","category":"Places"},
-{"french":"Mer","phonetic":"mair","english":"Sea","category":"Places"},
-{"french":"Village","phonetic":"vee-lazh","english":"Village","category":"Places"},
-{"french":"Ville","phonetic":"veel","english":"City","category":"Places"},
-{"french":"Kumasi","phonetic":"koo-ma-see","english":"Kumasi","category":"Places"},
-{"french":"Togo","phonetic":"to-go","english":"Togo","category":"Places"},
-{"french":"Paris","phonetic":"pa-ree","english":"Paris","category":"Places"},
-{"french":"Afrique","phonetic":"ah-freek","english":"Africa","category":"Places"},
-{"french":"Monde","phonetic":"mond","english":"World","category":"Places"},
-// === NEW - FEELINGS ===
-{"french":"Triste","phonetic":"treest","english":"Sad","category":"Feelings"},
-{"french":"Fâché","phonetic":"fa-sheh","english":"Angry","category":"Feelings"},
-{"french":"Fatigué","phonetic":"fa-tee-geh","english":"Tired","category":"Feelings"},
-{"french":"Seul","phonetic":"seul","english":"Lonely","category":"Feelings"},
-{"french":"Nerveux","phonetic":"nair-vuh","english":"Nervous","category":"Feelings"},
-{"french":"Content","phonetic":"kon-ton","english":"Glad","category":"Feelings"},
-{"french":"Surpris","phonetic":"sewr-pree","english":"Surprised","category":"Feelings"},
-{"french":"Excité","phonetic":"ex-see-teh","english":"Excited","category":"Feelings"},
-{"french":"Ennuyé","phonetic":"on-nwee-yeh","english":"Bored","category":"Feelings"},
-{"french":"Occupé","phonetic":"ok-koo-peh","english":"Busy","category":"Feelings"},
-{"french":"Timide","phonetic":"tee-meed","english":"Shy","category":"Feelings"},
-{"french":"Fier","phonetic":"fyer","english":"Proud","category":"Feelings"},
-{"french":"Désolé","phonetic":"deh-zo-leh","english":"Sorry","category":"Feelings"},
-{"french":"Inquiet","phonetic":"an-kyeh","english":"Worried","category":"Feelings"},
-{"french":"Espoir","phonetic":"es-pwar","english":"Hope","category":"Feelings"},
-{"french":"Confiance","phonetic":"kon-fyons","english":"Confidence","category":"Feelings"},
-{"french":"Courage","phonetic":"koo-razh","english":"Courage","category":"Feelings"},
-{"french":"Paix","phonetic":"peh","english":"Peace","category":"Feelings"},
-{"french":"Calme","phonetic":"kalm","english":"Calm","category":"Feelings"},
-{"french":"Gentil","phonetic":"zhon-tee","english":"Kind","category":"Feelings"},
-{"french":"Beau","phonetic":"bo","english":"Beautiful","category":"Feelings"},
-// === MORE FOOD GHANA ===
-{"french":"Jollof","phonetic":"jol-lof","english":"Jollof rice","category":"Ghana"},
-{"french":"Waakye","phonetic":"waa-kyeh","english":"Waakye","category":"Ghana"},
-{"french":"Kenkey","phonetic":"ken-keh","english":"Kenkey","category":"Ghana"},
-{"french":"Poulet","phonetic":"poo-leh","english":"Chicken","category":"Ghana"},
-{"french":"Plantain","phonetic":"plan-tan","english":"Plantain","category":"Ghana"}
+{"french":"Grand","phonetic":"gron","english":"Big","category":"Daily"}
 ];
 const REAL_SENTENCE_DATABASE = [
 {"french":"Je voudrais apprendre le français couramment.","phonetic":"zhuh voo-dreh ah-pron-druh","english":"I would like to learn French fluently.","category":"Daily"},
 {"french":"Où est la gare la plus proche?","phonetic":"oo eh la gar","english":"Where is the nearest train station?","category":"Travel"},
 {"french":"J'habite à Accra au Ghana.","phonetic":"zha-beet ah accra oh ghana","english":"I live in Accra Ghana.","category":"Ghana"},
 {"french":"Le Banku est délicieux.","phonetic":"luh banku eh deh-lee-syuh","english":"Banku is delicious.","category":"Ghana"},
-{"french":"Je travaille dans une entreprise internationale.","phonetic":"zhuh tra-vai","english":"I work in an international company.","category":"Business"},
-// NEW SENTENCES - People Places Feelings
-{"french":"Ma famille habite à Kumasi.","phonetic":"ma fa-mee ah-beet ah koo-ma-see","english":"My family lives in Kumasi.","category":"People"},
-{"french":"Mon père est très gentil.","phonetic":"mon pair eh treh zhon-tee","english":"My father is very kind.","category":"People"},
-{"french":"Je suis heureux avec mes amis.","phonetic":"zhuh swee uh-ruh ah-vek meh ah-mee","english":"I am happy with my friends.","category":"Feelings"},
-{"french":"Elle est triste aujourd'hui.","phonetic":"el eh treest oh-zhoor-dwee","english":"She is sad today.","category":"Feelings"},
-{"french":"La plage d'Accra est belle.","phonetic":"la plazh daccra eh bel","english":"Accra beach is beautiful.","category":"Places"},
-{"french":"J'ai confiance en mon avenir.","phonetic":"zheh kon-fyons on mon ah-veh-neer","english":"I have confidence in my future.","category":"Feelings"},
-{"french":"Mon meilleur ami est ghanéen.","phonetic":"mon meh-yor ah-mee eh ga-neh-an","english":"My best friend is Ghanaian.","category":"People"}
+{"french":"Je travaille dans une entreprise internationale.","phonetic":"zhuh tra-vai","english":"I work in an international company.","category":"Business"}
 ];
 
-// === FIXED - NO REPETITION - YOUR ORIGINAL FUNCTIONS KEPT ===
+// === FIXED - NO REPETITION ===
 function generateExpandedWords(){
   let list=[]; let seen=new Set(); let id=1;
   REAL_VOCAB_DATABASE.forEach(item=>{
@@ -179,7 +109,7 @@ function generateExpandedSentences(){
     if(!seen.has(item.french)){seen.add(item.french); list.push({id:id++,...item});}
   });
   let idx=0;
-  const TMPL=["J'aime {f}","Où est {f}?","Je veux {f}","Aujourd'hui {f}","{f} est important","Mon rêve est {f}"];
+  const TMPL=["J'aime {f}","Où est {f}?","Je veux {f}","Aujourd'hui {f}","{f} est important"];
   while(list.length<5200 && idx<20000){
     const base=REAL_SENTENCE_DATABASE[idx%REAL_SENTENCE_DATABASE.length];
     const t=TMPL[idx%TMPL.length];
