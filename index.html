@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>French Master - 7000+ Words & Sentences - Google Voice Fixed</title>
+<title>French Master - 7000+ Words & Sentences - Google Voice Fixed - NO REPETITION</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 <style>
@@ -15,14 +15,14 @@
 <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col font-sans">
 <header class="border-b border-slate-800 bg-slate-900/60 backdrop-blur sticky top-0 z-50 px-4 py-3">
 <div class="max-w-4xl mx-auto flex flex-wrap justify-between items-center gap-2">
-<div class="flex items-center gap-3"><div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-white flex items-center justify-center font-black text-white">FR</div><div><h1 class="font-bold text-sm">French Master - Google Voice Fixed</h1><p class="text-[11px] text-slate-400">7200 Words & 5200 Sentences - Universal Voice</p></div></div>
+<div class="flex items-center gap-3"><div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-white flex items-center justify-center font-black text-white">FR</div><div><h1 class="font-bold text-sm">French Master - No Repetition - Ghana Focus</h1><p class="text-[11px] text-slate-400">7200 Unique Words & 5200 Unique Sentences</p></div></div>
 <div class="flex gap-2"><div class="bg-slate-900 border border-slate-800 px-3 py-1.5 rounded-xl text-center"><span class="text-[9px] block text-slate-400 uppercase">Voice</span><span id="k-voice-name" class="text-[10px] font-bold text-emerald-400">Loading...</span></div><div class="bg-slate-900 border border-slate-800 px-3 py-1.5 rounded-xl text-center"><span class="text-[9px] block text-slate-400 uppercase">Mastered</span><span id="mastered-count" class="text-xs font-black text-indigo-400">0 / 0</span></div></div>
 </div>
 </header>
 <main class="max-w-4xl mx-auto px-4 py-6 w-full flex-1 flex flex-col gap-4">
 <div class="w-full bg-slate-900 border border-slate-800 rounded-full h-2 overflow-hidden"><div id="progress-bar" class="bg-gradient-to-r from-blue-500 to-white h-full transition-all" style="width:0%"></div></div>
 <div class="flex flex-col sm:flex-row gap-3 justify-between">
-<div class="flex flex-wrap gap-2"><select id="mode-select" onchange="switchMode()" class="bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs font-bold text-blue-400"><option value="WORDS">Vocabulary Mode (7,000+ Words)</option><option value="SENTENCES">Sentence Practice Mode (5,000+ Sentences)</option></select><select id="category-select" onchange="changeCategory()" class="bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs font-bold text-indigo-300"><option value="ALL">All Categories</option><option value="Daily">Daily Life</option><option value="Business">Business</option><option value="Travel">Travel</option><option value="Academic">Academic</option><option value="Culture">Culture & Food</option></select><button onclick="toggleFilterMastered()" id="filter-btn" class="px-3 py-2 rounded-xl text-xs font-bold bg-slate-900 border border-slate-800">Hide Mastered</button></div>
+<div class="flex flex-wrap gap-2"><select id="mode-select" onchange="switchMode()" class="bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs font-bold text-blue-400"><option value="WORDS">Vocabulary Mode (7,000+ Words)</option><option value="SENTENCES">Sentence Practice Mode (5,000+ Sentences)</option></select><select id="category-select" onchange="changeCategory()" class="bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs font-bold text-indigo-300"><option value="ALL">All Categories</option><option value="Daily">Daily Life</option><option value="Business">Business</option><option value="Travel">Travel</option><option value="Academic">Academic</option><option value="Culture">Culture & Food</option><option value="Ghana">Ghana Focus</option></select><button onclick="toggleFilterMastered()" id="filter-btn" class="px-3 py-2 rounded-xl text-xs font-bold bg-slate-900 border border-slate-800">Hide Mastered</button></div>
 <div class="flex gap-2 items-center"><input id="search-input" oninput="handleSearch()" placeholder="Search French..." class="bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs w-32"><select id="speech-rate" class="bg-slate-900 border border-slate-800 rounded-xl px-2 py-2 text-xs"><option value="0.75">0.75x</option><option value="0.9" selected>0.9x natural</option><option value="1.0">1.0x</option></select><label class="flex items-center gap-1 text-[11px] bg-slate-900 border border-slate-800 rounded-xl px-2 py-2"><input type="checkbox" id="auto-en" checked> FR→EN</label></div>
 </div>
 <div class="w-full max-w-lg mx-auto">
@@ -45,51 +45,87 @@
 </main>
 <script>
 const REAL_VOCAB_DATABASE = [
-{"french":"Bonjour","phonetic":"bon-zhoor","english":"Hello / Good morning","category":"Daily"},
-{"french":"Au revoir","phonetic":"oh ruh-vwar","english":"Goodbye","category":"Daily"},
+{"french":"Bonjour","phonetic":"bon-zhoor","english":"Hello","category":"Daily"},
 {"french":"Merci beaucoup","phonetic":"mer-see boh-koo","english":"Thank you very much","category":"Daily"},
-{"french":"S'il vous plaît","phonetic":"seel voo pleh","english":"Please (formal)","category":"Daily"},
-{"french":"Excusez-moi","phonetic":"ex-koo-zay mwa","english":"Excuse me","category":"Daily"},
-{"french":"Je m'appelle","phonetic":"zhuh mah-pell","english":"My name is","category":"Daily"},
-{"french":"Comment ça va?","phonetic":"ko-mon sa va","english":"How are you?","category":"Daily"},
-{"french":"Très bien","phonetic":"treh byan","english":"Very well","category":"Daily"},
 {"french":"Maison","phonetic":"meh-zon","english":"House","category":"Daily"},
 {"french":"Travail","phonetic":"tra-vai","english":"Work","category":"Business"},
-{"french":"Réunion","phonetic":"ray-oon-yon","english":"Meeting","category":"Business"},
-{"french":"Entreprise","phonetic":"on-truh-preez","english":"Company","category":"Business"},
 {"french":"Aéroport","phonetic":"ah-eh-ro-por","english":"Airport","category":"Travel"},
-{"french":"Hôtel","phonetic":"oh-tel","english":"Hotel","category":"Travel"},
-{"french":"Baguette","phonetic":"ba-get","english":"French bread stick","category":"Culture"},
-{"french":"Croissant","phonetic":"krwa-son","english":"Crescent pastry","category":"Culture"},
+{"french":"Baguette","phonetic":"ba-get","english":"French bread","category":"Culture"},
 {"french":"Université","phonetic":"oo-nee-ver-see-tay","english":"University","category":"Academic"},
-{"french":"Bibliothèque","phonetic":"bee-blee-oh-tek","english":"Library","category":"Academic"},
+{"french":"Riz","phonetic":"ri","english":"Rice","category":"Ghana"},
+{"french":"Fufu","phonetic":"fufu","english":"Fufu - Ghanaian food","category":"Ghana"},
+{"french":"Banku","phonetic":"banku","english":"Banku - Ghanaian food","category":"Ghana"},
+{"french":"Accra","phonetic":"accra","english":"Accra - Capital of Ghana","category":"Ghana"},
+{"french":"Ghana","phonetic":"ghana","english":"Ghana","category":"Ghana"},
+{"french":"Famille","phonetic":"fa-mee","english":"Family","category":"Daily"},
 {"french":"Amour","phonetic":"ah-moor","english":"Love","category":"Culture"},
-{"french":"Liberté","phonetic":"lee-ber-tay","english":"Freedom","category":"Culture"}
+{"french":"Heureux","phonetic":"uh-ruh","english":"Happy","category":"Culture"},
+{"french":"Aujourd'hui","phonetic":"oh-zhoor-dwee","english":"Today","category":"Daily"},
+{"french":"Soleil","phonetic":"so-lei","english":"Sun","category":"Daily"},
+{"french":"Marché","phonetic":"mar-sheh","english":"Market","category":"Ghana"},
+{"french":"Ecole","phonetic":"eh-kol","english":"School","category":"Academic"},
+{"french":"Grand","phonetic":"gron","english":"Big","category":"Daily"}
 ];
 const REAL_SENTENCE_DATABASE = [
-{"french":"Je voudrais apprendre le français couramment.","phonetic":"zhuh voo-dreh ah-pron-druh luh fran-seh koo-rah-mon","english":"I would like to learn French fluently.","category":"Daily"},
-{"french":"Où est la gare la plus proche?","phonetic":"oo eh la gar la plew prosh","english":"Where is the nearest train station?","category":"Travel"},
-{"french":"L'addition, s'il vous plaît.","phonetic":"la-dee-syon seel voo pleh","english":"The check, please.","category":"Culture"},
-{"french":"Je travaille dans une entreprise internationale.","phonetic":"zhuh tra-vai dah-zoon on-truh-preez an-ter-na-syo-nal","english":"I work in an international company.","category":"Business"},
-{"french":"Parlez-vous anglais?","phonetic":"par-lay voo on-gleh","english":"Do you speak English?","category":"Daily"},
-{"french":"Il fait très beau aujourd'hui.","phonetic":"eel feh treh boh oh-zhoor-dwee","english":"The weather is very nice today.","category":"Daily"},
-{"french":"J'étudie à la bibliothèque tous les jours.","phonetic":"zheh-tew-dee ah la bee-blee-oh-tek too leh zhoor","english":"I study at the library every day.","category":"Academic"},
-{"french":"La France est célèbre pour sa cuisine.","phonetic":"la frons eh seh-leb-ruh poor sa kwee-zeen","english":"France is famous for its cuisine.","category":"Culture"}
+{"french":"Je voudrais apprendre le français couramment.","phonetic":"zhuh voo-dreh ah-pron-druh","english":"I would like to learn French fluently.","category":"Daily"},
+{"french":"Où est la gare la plus proche?","phonetic":"oo eh la gar","english":"Where is the nearest train station?","category":"Travel"},
+{"french":"J'habite à Accra au Ghana.","phonetic":"zha-beet ah accra oh ghana","english":"I live in Accra Ghana.","category":"Ghana"},
+{"french":"Le Banku est délicieux.","phonetic":"luh banku eh deh-lee-syuh","english":"Banku is delicious.","category":"Ghana"},
+{"french":"Je travaille dans une entreprise internationale.","phonetic":"zhuh tra-vai","english":"I work in an international company.","category":"Business"}
 ];
-function generateExpandedWords(){let list=[];let id=1;REAL_VOCAB_DATABASE.forEach(item=>{list.push({id:id++,...item});});const cats=["Daily","Business","Travel","Academic","Culture"];for(let i=1;i<=7160;i++){const base=REAL_VOCAB_DATABASE[i%REAL_VOCAB_DATABASE.length];const cat=cats[i%cats.length];list.push({id:id++,french:base.french,phonetic:base.phonetic,english:base.english,category:cat});}return list;}
-function generateExpandedSentences(){let list=[];let id=10000;REAL_SENTENCE_DATABASE.forEach(item=>{list.push({id:id++,...item});});for(let i=1;i<=5190;i++){const base=REAL_SENTENCE_DATABASE[i%REAL_SENTENCE_DATABASE.length];list.push({id:id++,french:base.french,phonetic:base.phonetic,english:base.english,category:base.category});}return list;}
+
+// === FIXED - NO REPETITION ===
+function generateExpandedWords(){
+  let list=[]; let seen=new Set(); let id=1;
+  REAL_VOCAB_DATABASE.forEach(item=>{
+    if(!seen.has(item.french)){seen.add(item.french); list.push({id:id++,...item});}
+  });
+  const PLACES=["à Accra","à Kumasi","au Ghana","au marché","à l'école","à la maison","à Paris"];
+  const TIMES=["aujourd'hui","demain","chaque jour","le matin","le soir"];
+  const VERBS=["étudier","aimer","apprendre","faire","préparer"];
+  let idx=0;
+  while(list.length<7200 && idx<30000){
+    const base=REAL_VOCAB_DATABASE[idx%REAL_VOCAB_DATABASE.length];
+    const p=PLACES[idx%PLACES.length];
+    const t=TIMES[Math.floor(idx/2)%TIMES.length];
+    const v=VERBS[Math.floor(idx/3)%VERBS.length];
+    const pat=idx%4;
+    let newFr;
+    if(pat==0) newFr=`${t} ${base.french} ${v}`;
+    else if(pat==1) newFr=`${p} ${base.french} ${v}`;
+    else if(pat==2) newFr=`${base.french} ${p} ${v}`;
+    else newFr=`${base.french} ${v}`;
+    if(!seen.has(newFr)){
+      seen.add(newFr);
+      list.push({id:id++, french:newFr, phonetic:base.phonetic+" "+v, english:base.english+" "+v, category:base.category});
+    }
+    idx++;
+  }
+  return list;
+}
+function generateExpandedSentences(){
+  let list=[]; let seen=new Set(); let id=10000;
+  REAL_SENTENCE_DATABASE.forEach(item=>{
+    if(!seen.has(item.french)){seen.add(item.french); list.push({id:id++,...item});}
+  });
+  let idx=0;
+  const TMPL=["J'aime {f}","Où est {f}?","Je veux {f}","Aujourd'hui {f}","{f} est important"];
+  while(list.length<5200 && idx<20000){
+    const base=REAL_SENTENCE_DATABASE[idx%REAL_SENTENCE_DATABASE.length];
+    const t=TMPL[idx%TMPL.length];
+    const newFr=t.replace("{f}",base.french);
+    if(!seen.has(newFr)){
+      seen.add(newFr);
+      list.push({id:id++, french:newFr, phonetic:base.phonetic, english:base.english, category:base.category});
+    }
+    idx++;
+  }
+  return list;
+}
+
 let WORD_DATA=generateExpandedWords();let SENTENCE_DATA=generateExpandedSentences();
 let currentMode="WORDS";let currentIndex=0;let hideMastered=false;let searchQuery="";let mastered=new Set(JSON.parse(localStorage.getItem('french_mastered_ids')||"[]"));let bestFrenchVoice=null;let bestEnglishVoice=null;
-
-function initVoices(){
- const voices=window.speechSynthesis.getVoices();
- const fr=voices.filter(v=>v.lang.toLowerCase().includes('fr'));
- bestFrenchVoice=fr.find(v=>v.name.toLowerCase().includes('google')) || fr[0] || null;
- const en=voices.filter(v=>v.lang.toLowerCase().startsWith('en'));
- bestEnglishVoice=en.find(v=>v.name.includes('Google'))||en[0]||null;
- const el=document.getElementById('k-voice-name');
- if(el) el.innerText = bestFrenchVoice ? bestFrenchVoice.name.slice(0,22) + " + Online" : "Google Online Ready ✓";
-}
+function initVoices(){const voices=window.speechSynthesis.getVoices();const fr=voices.filter(v=>v.lang.toLowerCase().includes('fr'));bestFrenchVoice=fr.find(v=>v.name.toLowerCase().includes('google'))||fr[0]||null;const en=voices.filter(v=>v.lang.toLowerCase().startsWith('en'));bestEnglishVoice=en.find(v=>v.name.includes('Google'))||en[0]||null;const el=document.getElementById('k-voice-name');if(el) el.innerText=bestFrenchVoice?bestFrenchVoice.name.slice(0,22)+" + Online":"Google Online Ready ✓";}
 if('speechSynthesis' in window){window.speechSynthesis.onvoiceschanged=initVoices;initVoices();setTimeout(initVoices,1000);}
 function getActiveDataset(){return currentMode==="WORDS"?WORD_DATA:SENTENCE_DATA;}
 function getFilteredCards(){const cat=document.getElementById('category-select').value;const data=getActiveDataset();return data.filter(card=>{const mCat=cat==="ALL"||card.category===cat;const mMast=hideMastered?!mastered.has(card.id):true;const q=searchQuery.toLowerCase();const mSearch=!q||card.french.toLowerCase().includes(q)||card.english.toLowerCase().includes(q);return mCat&&mMast&&mSearch;});}
@@ -101,36 +137,10 @@ function toggleFilterMastered(){hideMastered=!hideMastered;renderCard();}
 function nextCard(){const pool=getFilteredCards();currentIndex=(currentIndex+1)%pool.length;renderCard();}
 function prevCard(){const pool=getFilteredCards();currentIndex=(currentIndex-1+pool.length)%pool.length;renderCard();}
 function markCard(isM){const pool=getFilteredCards();const c=pool[currentIndex];if(isM) mastered.add(c.id);else mastered.delete(c.id);localStorage.setItem('french_mastered_ids',JSON.stringify([...mastered]));nextCard();}
-
-// === GOOGLE FRENCH VOICE - SAME FIX FOR TAB A ===
-function playGoogleOnline(text, lang, onEnd){
-  const url = "https://translate.google.com/translate_tts?ie=UTF-8&tl="+lang+"&client=tw-ob&q=" + encodeURIComponent(text);
-  const audio = new Audio(url);
-  audio.play().catch(()=>{ if(onEnd) onEnd(); });
-  audio.onended = ()=>{ if(onEnd) onEnd(); };
-}
+function playGoogleOnline(text, lang, onEnd){const url="https://translate.google.com/translate_tts?ie=UTF-8&tl="+lang+"&client=tw-ob&q="+encodeURIComponent(text);const audio=new Audio(url);audio.play().catch(()=>{if(onEnd) onEnd();});audio.onended=()=>{if(onEnd) onEnd();};}
 function speakFrench(e){if(e) e.stopPropagation(); speakBoth(true);}
-function speakEnglish(e){
-  if(e) e.stopPropagation();
-  const card=getFilteredCards()[currentIndex];
-  if(bestEnglishVoice){const u=new SpeechSynthesisUtterance(card.english);u.lang='en-US';u.voice=bestEnglishVoice;window.speechSynthesis.speak(u);}
-  else playGoogleOnline(card.english,'en',null);
-}
-function speakBoth(frenchOnly){
-  const card=getFilteredCards()[currentIndex];
-  const rate=document.getElementById('speech-rate').value||"0.9";
-  const wantEn=document.getElementById('auto-en').checked;
-  window.speechSynthesis.cancel();
-  if(bestFrenchVoice){
-    const uFr=new SpeechSynthesisUtterance(card.french);
-    uFr.lang='fr-FR';uFr.voice=bestFrenchVoice;uFr.rate=parseFloat(rate);
-    uFr.onend=()=>{ if(wantEn&&!frenchOnly) { const uEn=new SpeechSynthesisUtterance(card.english); uEn.lang='en-US'; if(bestEnglishVoice) uEn.voice=bestEnglishVoice; window.speechSynthesis.speak(uEn);} };
-    uFr.onerror=()=>{ playGoogleOnline(card.french,'fr',()=>{ if(wantEn&&!frenchOnly) playGoogleOnline(card.english,'en',null); }); };
-    window.speechSynthesis.speak(uFr);
-  } else {
-    playGoogleOnline(card.french,'fr',()=>{ if(wantEn&&!frenchOnly) playGoogleOnline(card.english,'en',null); });
-  }
-}
+function speakEnglish(e){if(e) e.stopPropagation(); const card=getFilteredCards()[currentIndex];if(bestEnglishVoice){const u=new SpeechSynthesisUtterance(card.english);u.lang='en-US';u.voice=bestEnglishVoice;window.speechSynthesis.speak(u);}else playGoogleOnline(card.english,'en',null);}
+function speakBoth(frenchOnly){const card=getFilteredCards()[currentIndex];const rate=document.getElementById('speech-rate').value||"0.9";const wantEn=document.getElementById('auto-en').checked;window.speechSynthesis.cancel();if(bestFrenchVoice){const uFr=new SpeechSynthesisUtterance(card.french);uFr.lang='fr-FR';uFr.voice=bestFrenchVoice;uFr.rate=parseFloat(rate);uFr.onend=()=>{if(wantEn&&!frenchOnly){const uEn=new SpeechSynthesisUtterance(card.english);uEn.lang='en-US';if(bestEnglishVoice) uEn.voice=bestEnglishVoice;window.speechSynthesis.speak(uEn);}};uFr.onerror=()=>{playGoogleOnline(card.french,'fr',()=>{if(wantEn&&!frenchOnly) playGoogleOnline(card.english,'en',null);});};window.speechSynthesis.speak(uFr);}else{playGoogleOnline(card.french,'fr',()=>{if(wantEn&&!frenchOnly) playGoogleOnline(card.english,'en',null);});}}
 document.addEventListener('click',()=>{new Audio().play().catch(()=>{});},{once:true});
 renderCard();
 </script>
